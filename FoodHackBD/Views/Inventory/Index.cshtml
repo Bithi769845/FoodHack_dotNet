@@ -1,0 +1,40 @@
+﻿@model List<Inventory>
+<h2>My Inventory</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+<a class="btn btn-primary mb-3" asp-action="AddInventory">Add Inventory</a>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Food Item</th>
+            <th>Quantity</th>
+            <th>Added Date</th>
+            <th>Expiry Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.FoodItem</td>
+                <td>@item.Quantity</td>
+                <td>@item.AddedDate.ToString("dd-MMM-yyyy")</td>
+                <td>@item.ExpiryDate.ToString("dd-MMM-yyyy")</td>
+                <td>
+                    <a class="btn btn-sm btn-warning" asp-action="EditInventory" asp-route-id="@item.Id">Edit</a>
+                    <a class="btn btn-sm btn-danger" asp-action="DeleteInventory" asp-route-id="@item.Id"
+                       onclick="return confirm('Are you sure?')">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

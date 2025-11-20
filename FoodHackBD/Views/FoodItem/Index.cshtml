@@ -1,0 +1,23 @@
+﻿@model List<FoodItem>
+<h2>Food Items</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Expiration (days)</th>
+            <th>Cost ($)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Category</td>
+                <td>@item.ExpirationDays</td>
+                <td>@item.Cost</td>
+            </tr>
+        }
+    </tbody>
+</table>

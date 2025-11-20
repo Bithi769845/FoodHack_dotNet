@@ -1,0 +1,67 @@
+﻿@model ApplicationUser
+@{
+    ViewData["Title"] = "My Profile";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-3 mb-3">
+            <div class="list-group">
+                <a class="list-group-item list-group-item-action active" asp-controller="Account" asp-action="Profile">Profile</a>
+                <a class="list-group-item list-group-item-action" asp-controller="Home" asp-action="Index">Dashboard</a>
+                <form method="post" asp-controller="Account" asp-action="Logout">
+                    <button type="submit" class="list-group-item list-group-item-action btn btn-link ">Logout</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Profile Form -->
+        <div class="col-md-9">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h4 class="card-title mb-3">@Model.FullName ??</h4>
+                    <h6 class="card-subtitle mb-3 text-muted">@Model.Email</h6>
+
+                    <!-- Success Notification -->
+                    @if (TempData["SuccessMessage"] != null)
+                    {
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            @TempData["SuccessMessage"]
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+
+                    <form method="post">
+                        <div class="mb-3">
+                            <label asp-for="FullName" class="form-label">Full Name</label>
+                            <input asp-for="FullName" class="form-control" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="HouseholdSize" class="form-label">Household Size</label>
+                            <input asp-for="HouseholdSize" class="form-control" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="DietPreference" class="form-label">Diet Preference</label>
+                            <input asp-for="DietPreference" class="form-control" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Budget" class="form-label">Budget</label>
+                            <input asp-for="Budget" class="form-control" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Location" class="form-label">Location</label>
+                            <input asp-for="Location" class="form-control" />
+                        </div>
+
+                        <button class="btn btn-primary">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

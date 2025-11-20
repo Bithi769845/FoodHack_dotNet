@@ -1,0 +1,34 @@
+﻿@model Inventory
+<h2>Edit Inventory</h2>
+<form method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="mb-3">
+        <label asp-for="FoodItem"></label>
+        <input asp-for="FoodItem" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Quantity"></label>
+        <input asp-for="Quantity" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="AddedDate"></label>
+        <input asp-for="AddedDate" type="date" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="ExpiryDate"></label>
+        <input asp-for="ExpiryDate" type="date" class="form-control" />
+    </div>
+    <!-- Upload dropdown -->
+    <div class="mb-3">
+        <label>Attach Uploaded File (Optional)</label>
+        <select class="form-select" asp-for="UploadId">
+            <option value="">-- None --</option>
+            @foreach (var file in ViewBag.Uploads as List<Upload>)
+            {
+                <option value="@file.Id">@file.FileName</option>
+            }
+        </select>
+    </div>
+
+    <button class="btn btn-success">Save Changes</button>
+</form>

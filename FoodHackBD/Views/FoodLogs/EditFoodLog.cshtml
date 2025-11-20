@@ -1,0 +1,33 @@
+﻿@model FoodLog
+<h2>Edit Food Log</h2>
+<form method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="mb-3">
+        <label asp-for="ItemName"></label>
+        <input asp-for="ItemName" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Category"></label>
+        <input asp-for="Category" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Quantity"></label>
+        <input asp-for="Quantity" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="LogDate"></label>
+        <input asp-for="LogDate" type="date" class="form-control" />
+    </div>
+    <!-- Upload dropdown -->
+    <div class="mb-3">
+        <label>Attach Uploaded File (Optional)</label>
+        <select class="form-select" asp-for="UploadId">
+            <option value="">-- None --</option>
+            @foreach (var file in ViewBag.Uploads as List<Upload>)
+            {
+                <option value="@file.Id">@file.FileName</option>
+            }
+        </select>
+    </div>
+    <button class="btn btn-success">Save Changes</button>
+</form>

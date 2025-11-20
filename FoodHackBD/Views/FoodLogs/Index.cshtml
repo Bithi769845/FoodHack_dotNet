@@ -1,0 +1,40 @@
+﻿@model List<FoodLog>
+<h2>My Food Logs</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+<a class="btn btn-primary mb-3" asp-action="AddFoodLog">Add New Log</a>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Item Name</th>
+            <th>Category</th>
+            <th>Quantity</th>
+            <th>Date</th>
+            <th>Actions</th> <!-- নতুন column -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var log in Model)
+        {
+            <tr>
+                <td>@log.ItemName</td>
+                <td>@log.Category</td>
+                <td>@log.Quantity</td>
+                <td>@log.LogDate.ToString("dd-MMM-yyyy")</td>
+                <td>
+                    <a class="btn btn-sm btn-warning" asp-action="EditFoodLog" asp-route-id="@log.Id">Edit</a>
+                    <a class="btn btn-sm btn-danger" asp-action="DeleteFoodLog" asp-route-id="@log.Id"
+                       onclick="return confirm('Are you sure you want to delete this log?');">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,57 @@
+﻿@model DashboardViewModel
+
+<h2>Dashboard</h2>
+
+<div class="row mb-3">
+    <div class="col-md-4">
+        <div class="card p-3">
+            <h5>Total Inventory Items</h5>
+            <h2>@Model.InventoryCount</h2>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="card p-3 mb-3">
+            <h5>Profile Summary</h5>
+            <p>Name: @Model.UserProfile.FullName</p>
+            <p>Household: @Model.UserProfile.HouseholdSize</p>
+            <p>Diet: @Model.UserProfile.DietPreference</p>
+            <p>Location: @Model.UserProfile.Location</p>
+        </div>
+
+        <div class="card p-3">
+            <h5>Recent Food Logs</h5>
+            <ul>
+                @foreach (var log in Model.RecentLogs)
+                {
+                    <li>@log.ItemName (@log.Category) - @log.Quantity - @log.LogDate.ToString("dd-MMM-yyyy")</li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="card p-3 mt-3">
+    <h5>Recommended Resources</h5>
+    <ul>
+        @foreach (var res in Model.Recommendations)
+        {
+            <li>
+                <strong>@res.Title</strong> - @res.Description (Related to: @res.Category)
+            </li>
+        }
+    </ul>
+</div>
+
+<div class="card p-3 mt-3">
+    <h5>Recent Uploads</h5>
+    <ul>
+        @foreach (var file in Model.RecentUploads)
+        {
+            <li>
+                <a href="@file.FilePath" target="_blank">@file.FileName</a>
+            </li>
+        }
+    </ul>
+    <a class="btn btn-primary mt-2" asp-controller="Upload" asp-action="Index">View All Uploads</a>
+</div>
+

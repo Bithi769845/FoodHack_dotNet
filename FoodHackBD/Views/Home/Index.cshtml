@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg p-4 text-center" style="background: linear-gradient(to right, #ffecd2, #fcb69f); border-radius: 15px;">
+                <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                     alt="Welcome Image"
+                     class="img-fluid rounded mb-4"
+                     style="max-height: 300px; object-fit: cover;">
+
+                <h1 class="display-4 mb-3" style="font-family: 'Segoe UI', sans-serif; color: #6f4e37;">Welcome to FoodHackBD</h1>
+
+                <p class="lead mb-4" style="color: #4b3832;">
+                    Welcome to <strong>FoodHackBD</strong>! Manage your inventory, track your food logs, and keep your uploads organized—all in one place.
+                </p>
+
+
+                <div class="d-flex justify-content-center gap-3 mt-3">
+                    <a asp-controller="Dashboard" asp-action="Index" class="btn btn-success btn-lg shadow-sm">
+                        Go to Dashboard
+                    </a>
+                    <a asp-controller="Inventory" asp-action="Index" class="btn btn-warning btn-lg shadow-sm">
+                        View Inventory
+                    </a>
+                    <a asp-controller="FoodLogs" asp-action="Index" class="btn btn-info btn-lg shadow-sm">
+                        View Food Logs
+                    </a>
+                    <a asp-controller="Upload" asp-action="Index" class="btn btn-primary btn-lg shadow-sm">
+                        My Uploads
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

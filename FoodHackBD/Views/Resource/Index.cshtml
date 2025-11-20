@@ -1,0 +1,23 @@
+﻿@model List<Resource>
+<h2>Resources</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var res in Model)
+        {
+            <tr>
+                <td>@res.Title</td>
+                <td>@res.Category</td>
+                <td>@res.Type</td>
+                <td>@res.Description</td>
+            </tr>
+        }
+    </tbody>
+</table>
